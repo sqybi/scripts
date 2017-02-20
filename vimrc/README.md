@@ -2,6 +2,8 @@ sqybi's Vimrc
 =============
 
 Usage:
+------
+
 1. First of all, we need latest vim version with Python support.
 
    According to YCM's guide (https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source),

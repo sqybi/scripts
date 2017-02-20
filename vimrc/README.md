@@ -1,7 +1,12 @@
 sqybi's Vimrc
 =============
 
-Usage:
+Introduction
+------------
+
+This is modified from the .vimrc file I used when I was working in Google.
+
+Usage
 ------
 
 1. First of all, we need latest vim version with Python support.
@@ -71,4 +76,14 @@ Usage:
    ```sh
    vim +PluginInstall +qall
    ```
-5. Now everything is done! Enjoy your new VIM user interface!
+
+5. Setup YouCompleteMe:
+
+   ```sh
+   cd ~/.vim/bundle/YouCompleteMe
+   ./install.py --clang-completer
+   ```
+
+   See https://github.com/Valloric/YouCompleteMe for more install instructions.
+
+6. Now everything is done! Enjoy your new VIM user interface!

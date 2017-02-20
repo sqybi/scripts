@@ -1,0 +1,304 @@
+"
+" ==========
+" = Vundle =
+" ==========
+"
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Plugins
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized.git'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Valloric/YouCompleteMe'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" nerdtree
+autocmd vimenter * NERDTree
+
+"
+" =============
+" = Customize =
+" =============
+"
+
+" Relative line numbers
+set relativenumber
+
+" Use ; to find : commands history
+nnoremap ; :<C-f>
+
+" Automatically change the working path to the path of the current file
+autocmd BufNewFile,BufEnter * silent! lcd %:p:h
+
+" Set the Leader
+let mapleader=','
+
+" Alert when line is too long
+function! HighlightTooLongLines()
+  highlight def link RightMargin Error
+  if &textwidth != 0
+    exec ('match RightMargin /\%<' . (&textwidth + 3) . 'v.\%>' . (&textwidth + 1) . 'v/')
+  endif
+endfunction
+
+augroup highlight_toolong
+  au!
+  au FileType,BufEnter * call HighlightTooLongLines()
+augroup END
+
+" Cursor line and status line for current window
+autocmd WinEnter * setlocal cursorline
+autocmd BufEnter * setlocal cursorline
+autocmd WinLeave * setlocal nocursorline
+setlocal cursorline
+
+" DISABLE AUTOFORMATBUFFER!!!
+"augroup autoformat
+"  autocmd!
+"  autocmd FileType bzl AutoFormatBuffer buildifier
+"  autocmd FileType go AutoFormatBuffer gofmt
+"  autocmd FileType proto AutoFormatBuffer clang-format
+"  autocmd FileType c,cpp AutoFormatBuffer clang-format
+"augroup END
+
+" YouCompleteMe
+" https://github.com/Valloric/YouCompleteMe
+nnoremap <leader>yd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>yD :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>yt :YcmCompleter GetType<CR>
+nnoremap <leader>yp :YcmCompleter GetParent<CR>
+
+"
+" ===========
+" = General =
+" ===========
+"
+
+" 颜色主题
+syntax on
+let g:solarized_termcolors=256
+set t_Co=256
+set background=dark
+"colorscheme industry
+colorscheme solarized
+
+" GVIM设置
+if has("gui_running")
+  set guifont=Dejavu\ Sans\ Mono\ 11
+  set lines=60 columns=200
+endif
+
+" 不要使用vi的键盘模式，而是vim自己的
+set nocompatible
+
+" 自动切换目录
+set autochdir
+
+" 去掉输入错误的提示声音
+set noeb
+
+" 在处理未保存或只读文件的时候，弹出确认
+set confirm
+
+" 自动缩进
+set autoindent
+set cindent
+
+" Tab键的宽度
+set tabstop=2
+
+" 统一缩进为4
+set softtabstop=2
+set shiftwidth=2
+
+" 用空格代替制表符
+set expandtab
+autocmd Filetype html setlocal noexpandtab
+autocmd Filetype javascript setlocal noexpandtab
+autocmd Filetype css setlocal noexpandtab
+autocmd Filetype htmldjango setlocal noexpandtab
+
+" 在行和段开始处使用制表符
+set smarttab
+
+" 显示行号
+set number
+
+" 历史记录数
+set history=1000
+
+" 禁止生成临时文件
+set nobackup
+set noswapfile
+
+"搜索忽略大小写
+set ignorecase
+
+"搜索逐字符高亮
+set hlsearch
+set incsearch
+
+"行内替换
+set gdefault
+
+"编码设置
+set enc=utf-8
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+
+"语言设置
+set langmenu=zh_CN.UTF-8
+set helplang=cn
+
+" 我的状态行显示的内容（包括文件类型和解码）
+"set statusline=[%n]\ %F%m%r%h%w\ [%l/%L,%v][%p%%]%=[%{&ff}]\ [%Y]\ %{strftime(\"%b\ %d,\ %Y\ %H:%M\")}
+"hi StatusLine term=none
+"hi StatusLineNC term=none
+
+" 总是显示状态行
+set laststatus=2
+
+" 在编辑过程中，在右下角显示光标位置的状态行
+set ruler
+
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=1
+
+" 侦测文件类型
+filetype on
+
+" 载入文件类型插件
+filetype plugin on
+
+" 为特定文件类型载入相关缩进文件
+filetype indent on
+
+" 保存全局变量
+set viminfo+=!
+
+" 带有如下符号的单词不要被换行分割
+set iskeyword+=_,$,@,%,#,-
+
+" 字符间插入的像素行数目
+set linespace=0
+
+" 增强模式中的命令行自动完成操作
+set wildmenu
+
+" 使回格键（backspace）正常处理indent, eol, start等
+set backspace=2
+
+" 允许backspace和光标键跨越行边界
+set whichwrap+=<,>,h,l
+
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+
+" 通过使用: commands命令，告诉我们文件的哪一行被改变过
+set report=0
+
+" 启动的时候不显示那个援助索马里儿童的提示
+set shortmess=atI
+
+" 在被分割的窗口间显示空白，便于阅读
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+
+" 高亮显示匹配的括号
+set showmatch
+
+" 匹配括号高亮的时间（单位是十分之一秒）
+set matchtime=0
+
+" 光标移动到buffer的顶部和底部时保持距离
+set scrolloff=2
+
+" 为C程序提供自动缩进
+set smartindent
+
+" 只在下列文件类型被侦测到的时候显示行号，普通文本文件不显示
+" if has("autocmd")
+"    autocmd FileType xml,html,c,cs,java,perl,shell,bash,cpp,python,vim,php,ruby set number
+"    autocmd FileType xml,html vmap <C-o> <ESC>'<i<!--<ESC>o<ESC>'>o-->
+"    autocmd FileType java,c,cpp,cs vmap <C-o> <ESC>'<o/*<ESC>'>o*/
+"    autocmd FileType html,text,php,vim,c,java,xml,bash,shell,perl,python setlocal textwidth=100
+"    autocmd Filetype html,xml,xsl source $VIMRUNTIME/plugin/closetag.vim
+"    autocmd BufReadPost *
+"       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"       \   exe "normal g`\"" |
+"       \ endif
+" endif " has("autocmd")
+
+" 能够漂亮地显示.NFO文件
+set encoding=utf-8
+function! SetFileEncodings(encodings)
+    let b:myfileencodingsbak=&fileencodings
+    let &fileencodings=a:encodings
+endfunction
+function! RestoreFileEncodings()
+    let &fileencodings=b:myfileencodingsbak
+    unlet b:myfileencodingsbak
+endfunction
+
+au BufReadPre *.nfo call SetFileEncodings('cp437')|set ambiwidth=single
+au BufReadPost *.nfo call RestoreFileEncodings()
+
+" 用空格键来开关折叠
+set foldenable
+set foldmethod=manual
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+" F2控制菜单栏和工具栏显示
+set guioptions-=m
+set guioptions-=T
+map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+    \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+    \endif<CR>
+
+" airline settings
+let g:airline_left_sep='▶'
+let g:airline_right_sep='◀'
+if !exists('g:airline_symbols')
+  let g:airline_symbols={}
+endif
+let g:airline_symbols.crypt='🔒'
+
+let g:airline#extensions#whitespace#enabled=1
+
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#show_buffers=1
+let g:airline#extensions#tabline#show_tabs=1
+let g:airline#extensions#tabline#buffer_idx_mode=1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline#extensions#tabline#formatter='unique_tail_improved'
+
+let g:airline_section_b=''
+let g:airline_section_c='%F%m%r%h%w'
+
+"set statusline=[%n]\ %F%m%r%h%w\ [%l/%L,%v][%p%%]%=[%{&ff}]\ [%Y]\ %{strftime(\"%b\ %d,\ %Y\ %H:%M\")}

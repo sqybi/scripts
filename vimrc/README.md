@@ -7,14 +7,13 @@ Usage:
 1. First of all, we need latest vim version with Python support.
 
    According to YCM's guide (https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source),
-   use the following command (They said `lua5.1-dev` should be `liblua5.1-dev`
-   -- however `lua5.1-dev` also worked on my Ubuntu 16 workstation):
+   use the following command (`lua5.1-dev` should be `liblua5.1-dev` on Ubuntu 16):
 
    ```sh
    sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev \
-     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
-     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-     python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
+                        libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+                        libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+                        python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git
    ```
 
    Then remove vim if it is already existing:

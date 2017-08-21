@@ -27,18 +27,24 @@ Usage
    sudo apt-get remove vim vim-runtime gvim
    ```
 
-   After that, `git clone` source code of VIM from `https://github.com/vim/vim.git`.
+   After that, `git clone` source code of VIM from `https://github.com/vim/vim.git`:
+
+   ```sh
+   git clone https://github.com/vim/vim.git
+   ```
+
    Then update `--with-python-config-dir` and `--with-python3-config-dir` options
-   in the following command and run it:
+   in the following command, and run it:
    
    ```sh
+   cd ~/vim  # Root folder of vim source
    ./configure --with-features=huge \
                 --enable-multibyte \
                 --enable-rubyinterp=yes \
                 --enable-pythoninterp=yes \
                 --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
                 --enable-python3interp=yes \
-                --with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu \
+                --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
                 --enable-perlinterp=yes \
                 --enable-luainterp=yes \
                 --enable-gui=gtk2 --enable-cscope --prefix=/usr

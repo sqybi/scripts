@@ -48,7 +48,7 @@ Usage
                 --enable-perlinterp=yes \
                 --enable-luainterp=yes \
                 --enable-gui=gtk2 --enable-cscope --prefix=/usr
-   make VIMRUNTIMEDIR=/usr/share/vim/vim80
+   make VIMRUNTIMEDIR=/usr/share/vim/vim81
    ```
 
    Then `make install` vim:

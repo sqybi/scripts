@@ -36,12 +36,10 @@ Usage
    Then update `--with-python-config-dir` and `--with-python3-config-dir` options
    in the following command, and run it:
 
-   *
-   Notes:
+   *Notes:*
 
-   1. Update the python(3)-config-dir to your Python version. Remember to check if the directory exists.
-   2. Update the VIM version in VIMRUNTIMEDIR. Unmatched version will bring unknown error.
-   *
+   1. *Update the python(3)-config-dir to your Python version. Remember to check if the directory exists.*
+   2. *Update the VIM version in VIMRUNTIMEDIR. Unmatched version will bring unknown error.*
    
    ```sh
    cd ~/vim  # Root folder of vim source

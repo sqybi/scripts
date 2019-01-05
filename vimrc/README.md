@@ -35,6 +35,13 @@ Usage
 
    Then update `--with-python-config-dir` and `--with-python3-config-dir` options
    in the following command, and run it:
+
+   *
+   Notes:
+
+   1. Update the python(3)-config-dir to your Python version. Remember to check if the directory exists.
+   2. Update the VIM version in VIMRUNTIMEDIR. Unmatched version will bring unknown error.
+   *
    
    ```sh
    cd ~/vim  # Root folder of vim source
@@ -44,7 +51,7 @@ Usage
                 --enable-pythoninterp=yes \
                 --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
                 --enable-python3interp=yes \
-                --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu \
+                --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
                 --enable-perlinterp=yes \
                 --enable-luainterp=yes \
                 --enable-gui=gtk2 --enable-cscope --prefix=/usr

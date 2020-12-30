@@ -9,7 +9,12 @@ This is modified from the .vimrc file I used when I was working in Google.
 Usage
 ------
 
-1. First of all, we need latest vim version with Python support.
+1. First of all, we need latest VIM version with Python support.
+
+   If you are using Ubuntu 20+, just install vim by `apt install vim-nox` and skip bullet #2. Otherwise,
+   please follow the instrustions in bullet #2.
+
+2. If you don't have `vim-nox` in your repository, you could build VIM with Python support by yourself.
 
    According to YCM's guide (https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source),
    use the following command (`lua5.1-dev` should be `liblua5.1-dev` on Ubuntu 16):
@@ -34,12 +39,13 @@ Usage
    ```
 
    Then update `--with-python-config-dir` and `--with-python3-config-dir` options
-   in the following command, and run it:
+   in the following command, and run it.
 
    *Notes:*
 
    1. *Update the python(3)-config-dir to your Python version. Remember to check if the directory exists.*
    2. *Update the VIM version in VIMRUNTIMEDIR. Unmatched version will bring unknown error.*
+   3. *Try to keep the vim source for easier installation and uninstallation.*
    
    ```sh
    cd ~/vim  # Root folder of vim source
@@ -74,21 +80,27 @@ Usage
 
    Now you already have VIM with latest version.
 
-2. Install Vundle (https://github.com/VundleVim/Vundle.vim).
+3. Install Vundle (https://github.com/VundleVim/Vundle.vim).
 
    ```sh
    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
    ```
 
-3. Copy the vimrc file to `~/.vimrc`.
+4. Copy the vimrc file to `~/.vimrc`.
 
-4. Install plugins:
+5. Install plugins:
 
    ```sh
    vim +PluginInstall +qall
    ```
+   
+   To update plugins later, run:
 
-5. Setup YouCompleteMe:
+   ```sh
+   vim +PluginUpdate +qall
+   ```
+
+6. Setup YouCompleteMe:
 
    ```sh
    cd ~/.vim/bundle/YouCompleteMe
@@ -97,4 +109,4 @@ Usage
 
    See https://github.com/Valloric/YouCompleteMe for more install instructions.
 
-6. Now everything is done! Enjoy your new VIM user interface!
+7. Now everything is done! Enjoy your new VIM user interface!

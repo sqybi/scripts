@@ -104,7 +104,7 @@ Usage
 
    ```sh
    cd ~/.vim/bundle/YouCompleteMe
-   ./install.py --clang-completer
+   ./install.py --clang-completer  # or `./install.py --all` for all languages
    ```
 
    See https://github.com/Valloric/YouCompleteMe for more install instructions.
